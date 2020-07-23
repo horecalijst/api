@@ -1,0 +1,4 @@
+type Mutation {
+  createAuthenticationRequest(email: String!): Boolean
+  consomeAuthenticationRequest(token: String!): String
+}

@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+  node:
+    image: docker.wouterdeschuyter.be/horecalijst/api:node
+    container_name: be.horecalijst.api
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=reverse-proxy'
+      - 'traefik.http.middlewares.behorecalijstapi.redirectscheme.scheme=https'
+      - 'traefik.http.routers.behorecalijstapi-http.entrypoints=web'
+      - 'traefik.http.routers.behorecalijstapi-http.rule=Host(`api.horecalijst.be`)'
+      - 'traefik.http.routers.behorecalijstapi-http.middlewares=behorecalijstapi'
+      - 'traefik.http.routers.behorecalijstapi-https.entrypoints=websecure'
+      - 'traefik.http.routers.behorecalijstapi-https.rule=Host(`api.horecalijst.be`)'
+      - 'traefik.http.routers.behorecalijstapi-https.tls.certresolver=myhttpchallenge'
+    restart: unless-stopped
+    mem_limit: 128mb
+    networks:
+      - reverse-proxy
+      - database
+
+networks:
+  reverse-proxy:
+    external: true
+  database:
+    external: true
