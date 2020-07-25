@@ -55,8 +55,8 @@ const createAuthenticationRequest = async (
   markdown += '</a>';
   markdown += '<br><br>';
   markdown += `**Wanneer:** ${when}<br>`;
-  markdown += `**Toestel:** ${cleanedUserAgent}<br>`;
-  markdown += `**IP-adres:** ${ip}<br><br>`;
+  markdown += `**Browser & platform:** ${cleanedUserAgent}<br>`;
+  markdown += `**IP:** ${ip}<br><br>`;
   markdown += '- <a href="https://horecalijst.be">horecalijst.be</a>';
 
   const html = marked(markdown);
