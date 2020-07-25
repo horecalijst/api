@@ -1,3 +1,4 @@
 type Mutation {
   vatLookup(vat: String): VatLookup
+  addBusiness(name: String, address: String, vat: String, country: String): Business
 }

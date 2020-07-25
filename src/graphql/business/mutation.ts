@@ -1,3 +1,4 @@
+import Business from 'models/business';
 import { GraphqlContext } from 'server';
 import validateVat, { CountryCodes } from 'validate-vat-ts';
 
@@ -58,6 +59,34 @@ const vatLookup = async (
   return null;
 };
 
+const addBusiness = async (
+  _parent: any,
+  {
+    name,
+    address,
+    vat,
+    country,
+  }: { vat: string; name: string; address: string; country: string },
+  { user }: GraphqlContext,
+) => {
+  if (!user) {
+    throw new Error('not authenticated');
+  }
+
+  if ((await Business.count({ where: { vat } })) > 0) {
+    throw new Error('business already registered');
+  }
+
+  return Business.create({
+    userId: user.id,
+    name,
+    address,
+    vat,
+    country,
+  });
+};
+
 export default {
   vatLookup,
+  addBusiness,
 };
