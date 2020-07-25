@@ -1,8 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from 'services/sequelize';
 
-import Business from './business';
-
 class Contact extends Model {
   public id!: string;
   public businessId!: string;
@@ -42,7 +40,5 @@ Contact.init(
     ],
   },
 );
-
-Contact.belongsTo(Business, { as: 'contact', constraints: false });
 
 export default Contact;

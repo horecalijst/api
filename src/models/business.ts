@@ -1,6 +1,9 @@
+import { startOfToday } from 'date-fns';
 import { DataTypes, Model } from 'sequelize';
+import { Op } from 'sequelize';
 import sequelize from 'services/sequelize';
 
+import Contact from './contact';
 import User from './user';
 
 class Business extends Model {
@@ -10,6 +13,8 @@ class Business extends Model {
   public address!: string;
   public country!: string;
   public vat!: string;
+  public readonly numberOfContactsTotal!: number;
+  public readonly numberOfContactsToday!: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date | null;
@@ -31,6 +36,29 @@ Business.init(
     address: { type: DataTypes.STRING(64), allowNull: false },
     country: { type: DataTypes.STRING(2), allowNull: false },
     vat: { type: DataTypes.STRING(10), allowNull: false },
+    numberOfContactsTotal: {
+      type: DataTypes.VIRTUAL,
+      get(this: any) {
+        const businessId = this.getDataValue('id');
+
+        return Contact.count({ where: { businessId } });
+      },
+    },
+    numberOfContactsToday: {
+      type: DataTypes.VIRTUAL,
+      get(this: any) {
+        const businessId = this.getDataValue('id');
+
+        return Contact.count({
+          where: {
+            businessId,
+            createdAt: {
+              [Op.gte]: startOfToday(),
+            },
+          },
+        });
+      },
+    },
   },
   {
     sequelize,
@@ -49,5 +77,6 @@ Business.init(
 );
 
 Business.belongsTo(User, { as: 'business', constraints: false });
+Business.hasMany(Contact, { as: 'contacts', constraints: false });
 
 export default Business;
