@@ -1,4 +1,5 @@
 import Business from 'models/business';
+import { Op } from 'sequelize';
 import { GraphqlContext } from 'server';
 
 const businesses = async (
@@ -19,6 +20,18 @@ const businesses = async (
   });
 };
 
+const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
+  return Business.findAll({
+    where: {
+      name: {
+        [Op.like]: `%${q}%`,
+      },
+    },
+    limit: 7,
+  });
+};
+
 export default {
   businesses,
+  businessAutocomplete,
 };

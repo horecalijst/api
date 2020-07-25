@@ -1,3 +1,4 @@
 type Query {
   businesses: [Business]
+  businessAutocomplete(q: String!): [Business]
 }
