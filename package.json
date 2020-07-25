@@ -35,6 +35,7 @@
     "node-mailjet": "^3.3.1",
     "sequelize": "^6.3.3",
     "useragent": "^2.3.0",
+    "validate-vat-ts": "^1.1.0",
     "validator": "^13.1.1"
   },
   "devDependencies": {
