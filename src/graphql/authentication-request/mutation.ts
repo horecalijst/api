@@ -46,7 +46,7 @@ const createAuthenticationRequest = async (
 
   const link = `${process.env.APP_URL}/auth/${token}`;
 
-  const subject = '🔑 Aanmelden bij Horecalijst';
+  const subject = 'Aanmelden bij Horecalijst';
   let markdown = '';
   markdown += 'Hallo,<br><br>';
   markdown += `Je kan inloggen via onderstaande link. Deze link is bruikbaar komende ${authRequestValidForMinutes} minuten en kan slechts 1 keer gebruikt worden.<br>`;
