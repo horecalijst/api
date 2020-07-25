@@ -15,15 +15,9 @@ const vatLookup = async (
   try {
     const viesResponse = await validateVat(CountryCodes.Belgium, vatNumber);
 
-    if (!viesResponse?.name) {
-      return null;
+    if (viesResponse?.name && viesResponse?.name !== '---') {
+      return viesResponse;
     }
-
-    if (viesResponse?.name === '---') {
-      return null;
-    }
-
-    return viesResponse;
   } catch {
     // noop
   }
