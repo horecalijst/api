@@ -48,6 +48,6 @@ Business.init(
   },
 );
 
-Business.belongsTo(User, { as: 'user', constraints: false });
+Business.belongsTo(User, { as: 'business', constraints: false });
 
 export default Business;
