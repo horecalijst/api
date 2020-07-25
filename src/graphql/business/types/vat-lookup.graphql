@@ -1,0 +1,8 @@
+type VatLookup {
+  countryCode: String
+  vatNumber: String
+  requestDate: String
+  valid: Boolean
+  name: String
+  address: String
+}
