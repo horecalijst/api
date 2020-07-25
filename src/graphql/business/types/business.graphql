@@ -1,0 +1,8 @@
+type Business {
+  id: String
+  user: User
+  name: String
+  address: String
+  country: String
+  vat: String
+}
