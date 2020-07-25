@@ -21,7 +21,7 @@ const createAuthenticationRequest = async (
   const { email } = args;
   const { userAgent, ip } = context;
   const cleanedUserAgent = cleanUserAgent(userAgent);
-  const when = `${formatDate(new Date(), 'd MMMM, yyyy HH:mm', {
+  const when = `${formatDate(new Date(), 'd MMMM yyyy, HH:mm', {
     locale,
   })} UTC`;
 
