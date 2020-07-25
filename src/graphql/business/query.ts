@@ -21,6 +21,10 @@ const businesses = async (
 };
 
 const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
+  if (q.length < 3) {
+    return [];
+  }
+
   return Business.findAll({
     where: {
       name: {
