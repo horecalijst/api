@@ -1,6 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from 'services/sequelize';
 
+import AuthenticationRequest from './authentication-request';
 import Business from './business';
 
 export enum UserStatus {
@@ -61,6 +62,15 @@ User.init(
   },
 );
 
-User.hasMany(Business, { as: 'businesses', constraints: false });
+User.hasMany(AuthenticationRequest, {
+  as: 'authenticationRequests',
+  constraints: false,
+  foreignKey: 'userId',
+});
+User.hasMany(Business, {
+  as: 'businesses',
+  constraints: false,
+  foreignKey: 'userId',
+});
 
 export default User;

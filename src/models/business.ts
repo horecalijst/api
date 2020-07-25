@@ -75,6 +75,10 @@ Business.init(
   },
 );
 
-Business.hasMany(Contact, { as: 'contacts', constraints: false });
+Business.hasMany(Contact, {
+  as: 'contacts',
+  constraints: false,
+  foreignKey: 'businessId',
+});
 
 export default Business;
