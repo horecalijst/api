@@ -4,7 +4,6 @@ import { Op } from 'sequelize';
 import sequelize from 'services/sequelize';
 
 import Contact from './contact';
-import User from './user';
 
 class Business extends Model {
   public id!: string;
@@ -76,7 +75,6 @@ Business.init(
   },
 );
 
-Business.belongsTo(User, { as: 'business', constraints: false });
 Business.hasMany(Contact, { as: 'contacts', constraints: false });
 
 export default Business;

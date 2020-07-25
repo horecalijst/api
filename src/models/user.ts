@@ -1,6 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from 'services/sequelize';
 
+import Business from './business';
+
 export enum UserStatus {
   Active = 'active',
   NotActive = 'not-active',
@@ -58,5 +60,7 @@ User.init(
     ],
   },
 );
+
+User.hasMany(Business, { as: 'businesses', constraints: false });
 
 export default User;
