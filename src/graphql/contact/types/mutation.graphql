@@ -1,0 +1,3 @@
+type Mutation {
+  addContact(name: String, email: String, phone: String, businessId: String!): Contact
+}
