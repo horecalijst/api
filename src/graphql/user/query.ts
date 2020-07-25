@@ -1,10 +1,7 @@
 import User from 'models/user';
+import { GraphqlContext } from 'server';
 
-const me = async (
-  _parent: any,
-  _args: any,
-  context: { user?: { id: string } },
-) => {
+const me = async (_parent: any, _args: any, context: GraphqlContext) => {
   const { user } = context;
 
   if (!user) {
