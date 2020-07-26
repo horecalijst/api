@@ -19,6 +19,7 @@
     }
   },
   "dependencies": {
+    "@mollie/api-client": "^3.2.3",
     "@types/node-mailjet": "^3.3.3",
     "apollo-server-express": "^2.16.0",
     "body-parser": "^1.19.0",
