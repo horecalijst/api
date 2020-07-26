@@ -9,7 +9,7 @@ class Product extends Model {
   public id!: string;
   public description!: string;
   public currency!: ProductCurrency;
-  public price!: number;
+  public value!: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date | null;
@@ -24,7 +24,7 @@ Product.init(
     },
     description: { type: DataTypes.STRING(16), allowNull: false },
     currency: { type: DataTypes.ENUM(ProductCurrency.Euro), allowNull: false },
-    price: { type: DataTypes.FLOAT(8, 2), allowNull: false },
+    value: { type: DataTypes.FLOAT(8, 2), allowNull: false },
   },
   {
     sequelize,

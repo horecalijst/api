@@ -8,7 +8,7 @@ const products = async (_parent: any, _args: any, context: GraphqlContext) => {
     throw new Error('not authenticated');
   }
 
-  return Product.findAll({ order: [['price', 'ASC']] });
+  return Product.findAll({ order: [['value', 'ASC']] });
 };
 
 export default {
