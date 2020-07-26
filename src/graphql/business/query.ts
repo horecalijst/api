@@ -20,6 +20,32 @@ const businesses = async (
   });
 };
 
+const business = async (
+  _parent: any,
+  { id }: { id: string },
+  context: GraphqlContext,
+) => {
+  const { user } = context;
+
+  if (!user) {
+    throw new Error('not authenticated');
+  }
+
+  const business = await Business.findOne({
+    where: { id },
+    include: [{ all: true, nested: true }],
+  });
+  if (business && business?.userId !== user.id) {
+    throw new Error('no permissions');
+  }
+
+  if (!business) {
+    return null;
+  }
+
+  return business;
+};
+
 const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
   if (q.length < 3) {
     return [];
@@ -37,5 +63,6 @@ const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
 
 export default {
   businesses,
+  business,
   businessAutocomplete,
 };
