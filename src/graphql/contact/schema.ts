@@ -5,8 +5,9 @@ import User from '../user/types/user.graphql';
 import resolvers from './resolvers';
 import Contact from './types/contact.graphql';
 import Mutation from './types/mutation.graphql';
+import Query from './types/query.graphql';
 
 export default makeExecutableSchema({
-  typeDefs: [Contact, Business, User, Mutation],
+  typeDefs: [Contact, Business, User, Mutation, Query],
   resolvers,
 });
