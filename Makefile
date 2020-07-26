@@ -24,6 +24,7 @@ lint: node_modules
 .build-app: node_modules
 	docker run --rm -v $(PWD):/code -w /code \
 			-e APP_URL \
+			-e API_URL \
 			-e DATABASE_HOST \
 			-e DATABASE_NAME \
 			-e DATABASE_USER \

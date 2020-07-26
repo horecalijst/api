@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_URL: ${{ secrets.PRODUCTION_APP_URL }}
+      API_URL: ${{ secrets.PRODUCTION_API_URL }}
       DATABASE_HOST: ${{ secrets.PRODUCTION_DATABASE_HOST }}
       DATABASE_NAME: ${{ secrets.PRODUCTION_DATABASE_NAME }}
       DATABASE_USER: ${{ secrets.PRODUCTION_DATABASE_USER }}
