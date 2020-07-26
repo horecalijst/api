@@ -5,6 +5,7 @@ export enum OrderStatus {
   Pending = 'PENDING',
   Paid = 'PAID',
   Canceled = 'CANCELED',
+  Granted = 'GRANTED',
 }
 
 class Order extends Model {
@@ -47,6 +48,7 @@ Order.init(
         OrderStatus.Pending,
         OrderStatus.Paid,
         OrderStatus.Canceled,
+        OrderStatus.Granted,
       ),
       allowNull: false,
     },
