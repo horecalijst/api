@@ -47,10 +47,6 @@ const business = async (
 };
 
 const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
-  if (q.length < 3) {
-    return [];
-  }
-
   return Business.findAll({
     where: {
       name: {
@@ -58,6 +54,7 @@ const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
       },
     },
     limit: 7,
+    order: q.length === 0 ? [['name', 'ASC']] : [],
   });
 };
 
