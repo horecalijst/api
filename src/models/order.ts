@@ -60,6 +60,23 @@ Order.init(
     tableName: 'orders',
     timestamps: true,
     paranoid: true,
+    indexes: [
+      {
+        fields: ['userId'],
+      },
+      {
+        fields: ['businessId'],
+      },
+      {
+        fields: ['productId'],
+      },
+      {
+        fields: ['externalReference'],
+      },
+      {
+        fields: ['status'],
+      },
+    ],
   },
 );
 
