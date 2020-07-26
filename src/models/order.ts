@@ -1,6 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from 'services/sequelize';
 
+import Product from './product';
+
 export enum OrderStatus {
   Pending = 'PENDING',
   Paid = 'PAID',
@@ -79,5 +81,11 @@ Order.init(
     ],
   },
 );
+
+Order.belongsTo(Product, {
+  as: 'product',
+  constraints: false,
+  foreignKey: 'productId',
+});
 
 export default Order;

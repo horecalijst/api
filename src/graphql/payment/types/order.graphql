@@ -1,0 +1,7 @@
+type Order {
+  id: String
+  externalPaymentLink: String
+  status: String
+  product: Product
+  createdAt: String
+}
