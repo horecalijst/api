@@ -41,7 +41,7 @@ const createPayment = async (
       currency: product.currency,
     },
     description: product.description,
-    redirectUrl: `${process.env.API_URL}/payments/${orderId}`,
+    redirectUrl: `${process.env.APP_URL}/zakelijk/${businessId}`,
     metadata: {
       productId,
       orderId,
