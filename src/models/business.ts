@@ -81,7 +81,7 @@ Business.init(
               },
             });
 
-            data[`${date.getTime()}`] = count;
+            data[`${startDate.getTime()}`] = count;
           }
 
           return data;
