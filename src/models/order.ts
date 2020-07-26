@@ -14,6 +14,7 @@ class Order extends Model {
   public businessId!: string;
   public productId!: string;
   public externalReference!: string;
+  public externalPaymentLink!: string;
   public status!: OrderStatus;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -43,6 +44,7 @@ Order.init(
       allowNull: false,
     },
     externalReference: { type: DataTypes.STRING(16), allowNull: false },
+    externalPaymentLink: { type: DataTypes.STRING(128), allowNull: false },
     status: {
       type: DataTypes.ENUM(
         OrderStatus.Pending,
