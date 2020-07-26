@@ -10,4 +10,5 @@ type Business {
   numberOfContactsTotal: Int
   numberOfContactsToday: Int
   numberOfContactsByDate: JSON
+  createdAt: String
 }
