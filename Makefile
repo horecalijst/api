@@ -33,6 +33,7 @@ lint: node_modules
 			-e MAILJET_API_SECRET \
 			-e MAIL_SENDER_NAME \
 			-e MAIL_SENDER_EMAIL \
+			-e MOLLIE_API_KEY \
 		node:14-slim yarn build
 	touch .build-app
 
