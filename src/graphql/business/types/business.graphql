@@ -7,6 +7,8 @@ type Business {
   address: String
   country: String
   vat: String
+  status: String
+  daysLeft: Int
   numberOfContactsTotal: Int
   numberOfContactsToday: Int
   numberOfContactsByDate: JSON

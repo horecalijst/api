@@ -3,5 +3,6 @@ type Product {
   description: String
   currency: String
   value: Float
+  time: Int
   createdAt: String
 }
