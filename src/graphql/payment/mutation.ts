@@ -1,13 +1,9 @@
-import createMollieClient from '@mollie/api-client';
 import Business from 'models/business';
 import Order, { OrderStatus } from 'models/order';
 import Product from 'models/product';
 import { GraphqlContext } from 'server';
+import Mollie from 'services/mollie';
 import { v4 as uuidv4 } from 'uuid';
-
-const mollieClient = createMollieClient({
-  apiKey: process.env.MOLLIE_API_KEY as string,
-});
 
 const createPayment = async (
   _parent: any,
@@ -35,7 +31,7 @@ const createPayment = async (
   }
 
   const orderId = uuidv4();
-  const molliePaymentOrder = await mollieClient.payments.create({
+  const molliePaymentOrder = await Mollie.payments.create({
     amount: {
       value: `${product.value}`,
       currency: product.currency,
