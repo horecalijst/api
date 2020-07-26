@@ -84,7 +84,7 @@ Business.init(
             const startDate = new Date(order.createdAt);
             const endDate = addSeconds(startDate, product?.time || 0);
 
-            daysLeft += Math.max(differenceInDays(endDate, startDate), 0);
+            daysLeft += Math.max(differenceInDays(endDate, new Date()), 0);
           }
 
           return daysLeft;
@@ -124,7 +124,7 @@ Business.init(
             const startDate = new Date(order.createdAt);
             const endDate = addSeconds(startDate, product?.time || 0);
 
-            daysLeft += Math.max(differenceInDays(endDate, startDate), 0);
+            daysLeft += Math.max(differenceInDays(endDate, new Date()), 0);
           }
 
           if (daysLeft > 0) {
