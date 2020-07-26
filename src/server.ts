@@ -53,6 +53,7 @@ const apollo = new ApolloServer({
 
 // Middleware
 express.use(bodyParser.json());
+express.use(bodyParser.urlencoded());
 express.use(
   jwt({
     secret: process.env.JWT_SECRET as string,
@@ -63,6 +64,9 @@ express.use(
 
 // Healthcheck
 express.get('/ping', requestHandlers.ping);
+
+// Payment callback
+express.post('/payments/:orderId', requestHandlers.paymentCallback);
 
 // Link Apollo with Express
 apollo.applyMiddleware({ app: express, path: '/' });

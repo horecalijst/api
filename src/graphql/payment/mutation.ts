@@ -38,6 +38,7 @@ const createPayment = async (
     },
     description: product.description,
     redirectUrl: `${process.env.APP_URL}/zakelijk/${businessId}`,
+    webhookUrl: `${process.env.API_URL}/payments/${orderId}`,
     metadata: {
       productId,
       orderId,

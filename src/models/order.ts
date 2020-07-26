@@ -5,8 +5,10 @@ import Product from './product';
 
 export enum OrderStatus {
   Pending = 'PENDING',
+  Expired = 'EXPIRED',
   Paid = 'PAID',
   Canceled = 'CANCELED',
+  Failed = 'FAILED',
   Granted = 'GRANTED',
 }
 
@@ -50,8 +52,10 @@ Order.init(
     status: {
       type: DataTypes.ENUM(
         OrderStatus.Pending,
+        OrderStatus.Expired,
         OrderStatus.Paid,
         OrderStatus.Canceled,
+        OrderStatus.Failed,
         OrderStatus.Granted,
       ),
       allowNull: false,
