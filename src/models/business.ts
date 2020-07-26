@@ -1,4 +1,4 @@
-import { startOfToday } from 'date-fns';
+import { endOfDay, startOfDay, startOfToday, subDays } from 'date-fns';
 import { DataTypes, Model } from 'sequelize';
 import { Op } from 'sequelize';
 import sequelize from 'services/sequelize';
@@ -14,6 +14,7 @@ class Business extends Model {
   public vat!: string;
   public readonly numberOfContactsTotal!: number;
   public readonly numberOfContactsToday!: number;
+  public readonly numbersOfContactsByDate!: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date | null;
@@ -56,6 +57,35 @@ Business.init(
             },
           },
         });
+      },
+    },
+    numberOfContactsByDate: {
+      type: DataTypes.VIRTUAL,
+      get(this: any) {
+        return (async () => {
+          const businessId = this.getDataValue('id');
+
+          const data: { [key: string]: number } = {};
+          for (let i = 0; i < 14; i++) {
+            const date = subDays(new Date(), i);
+            const startDate = startOfDay(date);
+            const endDate = endOfDay(date);
+
+            const count = await Contact.count({
+              where: {
+                businessId,
+                createdAt: {
+                  [Op.gte]: startDate,
+                  [Op.lte]: endDate,
+                },
+              },
+            });
+
+            data[`${date.getTime()}`] = count;
+          }
+
+          return data;
+        })();
       },
     },
   },

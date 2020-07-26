@@ -1,3 +1,5 @@
+scalar JSON
+
 type Business {
   id: String
   user: User
@@ -7,4 +9,5 @@ type Business {
   vat: String
   numberOfContactsTotal: Int
   numberOfContactsToday: Int
+  numberOfContactsByDate: JSON
 }
