@@ -35,6 +35,7 @@ lint: node_modules
 			-e MAIL_SENDER_NAME \
 			-e MAIL_SENDER_EMAIL \
 			-e MOLLIE_API_KEY \
+			-e FREE_TRIAL_DAYS \
 		node:14-slim yarn build
 	touch .build-app
 
