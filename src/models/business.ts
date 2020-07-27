@@ -202,6 +202,9 @@ Business.init(
       {
         fields: ['name'],
       },
+      {
+        fields: ['active'],
+      },
     ],
   },
 );
