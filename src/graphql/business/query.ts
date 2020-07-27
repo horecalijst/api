@@ -52,6 +52,7 @@ const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
       name: {
         [Op.like]: `%${q}%`,
       },
+      active: true,
     },
     limit: 7,
     order: q.length === 0 ? [['name', 'ASC']] : [],
