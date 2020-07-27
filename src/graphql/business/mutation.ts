@@ -73,9 +73,9 @@ const addBusiness = async (
     throw new Error('not authenticated');
   }
 
-  if ((await Business.count({ where: { vat } })) > 0) {
-    throw new Error('business already registered');
-  }
+  // if ((await Business.count({ where: { vat } })) > 0) {
+  //   throw new Error('business already registered');
+  // }
 
   return Business.create({
     userId: user.id,
