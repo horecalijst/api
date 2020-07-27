@@ -18,7 +18,7 @@ const batch = 10;
       console.log(`Checking business ${business.id}: ${status}`);
 
       business.active = status !== BusinessStatus.Expired;
-      business.save();
+      await business.save();
     }
   }
 
