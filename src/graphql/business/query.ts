@@ -54,7 +54,7 @@ const businessAutocomplete = async (_parent: any, { q }: { q: string }) => {
       },
       active: true,
     },
-    limit: 7,
+    limit: 5,
     order: q.length === 0 ? [['name', 'ASC']] : [],
   });
 };
