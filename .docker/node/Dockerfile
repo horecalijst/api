@@ -5,6 +5,7 @@ COPY ./package.json ./package.json
 COPY ./yarn.lock ./yarn.lock
 COPY ./dist/server.js ./server.js
 COPY ./dist/healthcheck.js ./healthcheck.js
+COPY ./dist/check-business-subscriptions.js ./check-business-subscriptions.js
 COPY ./.docker/node/crons ./crons
 COPY ./.docker/node/entrypoint.sh ./entrypoint.sh
 
