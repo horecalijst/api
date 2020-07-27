@@ -29,6 +29,7 @@ class Business extends Model {
   public address!: string;
   public country!: string;
   public vat!: string;
+  public active!: boolean;
   public readonly status!: BusinessStatus;
   public readonly daysLeft!: number;
   public readonly numberOfContactsTotal!: number;
@@ -55,6 +56,7 @@ Business.init(
     address: { type: DataTypes.STRING(64), allowNull: false },
     country: { type: DataTypes.STRING(2), allowNull: false },
     vat: { type: DataTypes.STRING(10), allowNull: false },
+    active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
     daysLeft: {
       type: DataTypes.VIRTUAL,
       get(this: any) {
