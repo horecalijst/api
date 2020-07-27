@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import Business from 'models/business';
 import Order, { OrderStatus } from 'models/order';
 import Mollie from 'services/mollie';
 
@@ -30,6 +31,15 @@ export default async (req: Request, res: Response) => {
         break;
       case 'paid':
         order.status = OrderStatus.Paid;
+
+        const business = await Business.findOne({
+          where: { id: order.businessId },
+        });
+
+        if (business) {
+          business.active = true;
+          await business.save();
+        }
         break;
       case 'canceled':
         order.status = OrderStatus.Canceled;
