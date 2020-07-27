@@ -5,7 +5,7 @@ import { GraphqlContext } from 'server';
 import Mollie from 'services/mollie';
 import { v4 as uuidv4 } from 'uuid';
 
-const createPayment = async (
+const createOrder = async (
   _parent: any,
   { productId, businessId }: { productId: string; businessId: string },
   context: GraphqlContext,
@@ -68,5 +68,5 @@ const createPayment = async (
 };
 
 export default {
-  createPayment,
+  createOrder,
 };
