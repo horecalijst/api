@@ -1,8 +1,8 @@
 type Product {
   id: String
   description: String
+  time: Int
   currency: String
   value: Float
-  time: Int
   createdAt: String
 }
