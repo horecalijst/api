@@ -1,6 +1,7 @@
 type Product {
   id: String
   description: String
+  period: String
   time: Int
   currency: String
   value: Float
