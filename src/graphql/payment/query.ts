@@ -11,6 +11,11 @@ const products = async (_parent: any, _args: any, context: GraphqlContext) => {
   return Product.findAll({ order: [['value', 'ASC']] });
 };
 
+const product = async (_parent: any, { period }: { period: string }) => {
+  return Product.fineOne({ where: { period } });
+};
+
 export default {
   products,
+  product,
 };
