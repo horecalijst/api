@@ -12,7 +12,7 @@ const products = async (_parent: any, _args: any, context: GraphqlContext) => {
 };
 
 const product = async (_parent: any, { period }: { period: string }) => {
-  return Product.fineOne({ where: { period } });
+  return Product.findOne({ where: { period } });
 };
 
 export default {
