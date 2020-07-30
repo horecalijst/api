@@ -48,6 +48,11 @@ Product.init(
     tableName: 'products',
     timestamps: true,
     paranoid: true,
+    indexes: [
+      {
+        fields: ['period'],
+      },
+    ],
   },
 );
 
