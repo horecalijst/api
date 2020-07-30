@@ -5,12 +5,19 @@ export enum ProductCurrency {
   Euro = 'EUR',
 }
 
+export enum ProductPeriod {
+  Monthly = 'MONTHLY',
+  Quarterly = 'QUARTERLY',
+  Yearly = 'YEARLY',
+}
+
 class Product extends Model {
   public id!: string;
   public description!: string;
   public currency!: ProductCurrency;
   public value!: number;
   public time!: number;
+  public period!: ProductPeriod;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date | null;
@@ -27,6 +34,14 @@ Product.init(
     currency: { type: DataTypes.ENUM(ProductCurrency.Euro), allowNull: false },
     value: { type: DataTypes.FLOAT(8, 2), allowNull: false },
     time: { type: DataTypes.INTEGER.UNSIGNED, allowNull: false },
+    period: {
+      type: DataTypes.ENUM(
+        ProductPeriod.Monthly,
+        ProductPeriod.Quarterly,
+        ProductPeriod.Yearly,
+      ),
+      allowNull: false,
+    },
   },
   {
     sequelize,
