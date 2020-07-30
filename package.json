@@ -1,6 +1,6 @@
 {
   "name": "@horecalijst/api",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "private": true,
   "repository": "github:horecalijst/api",
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
