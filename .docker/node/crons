@@ -6,5 +6,5 @@
 # |  |  |  |  |
 # *  *  *  *  *  command to be executed
 
-0 * * * * cd /code && node ./check-business-subscriptions.js
+55 * * * * cd /code && node ./check-business-subscriptions.js
 */15 * * * * cd /code && node ./destroy-expired-contacts.js
