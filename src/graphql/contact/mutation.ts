@@ -30,7 +30,7 @@ const addContact = async (
   const email = rawEmail?.trim().toLowerCase() || null;
   let phone = rawPhone?.trim() || null;
   // assume +32 if no country prefix
-  if (phone?.substr(0, 1) !== '+' || phone?.substr(0, 3) !== '003') {
+  if (phone && (phone.substr(0, 1) !== '+' || phone.substr(0, 3) !== '003')) {
     phone = `+32${phone?.substr(1, phone.length - 1)}`;
   }
   if (phone) {
