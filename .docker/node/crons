@@ -7,3 +7,4 @@
 # *  *  *  *  *  command to be executed
 
 */10 * * * * cd /code && node ./check-business-subscriptions.js
+*/15 * * * * cd /code && node ./destroy-expired-contacts.js
