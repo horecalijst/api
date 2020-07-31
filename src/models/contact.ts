@@ -7,7 +7,7 @@ class Contact extends Model {
   public name?: string | null;
   public email?: string | null;
   public phone?: string | null;
-  public readonly destroyedAt!: Date;
+  public destroyedAt!: Date;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date | null;
