@@ -22,16 +22,19 @@ import { Op } from 'sequelize';
     console.log(`Destroying data for ${id}`);
 
     const contact = (await Contact.findOne({ where: { id } })) as Contact;
-    contact.name = hasha(
-      `${contact.name?.trim().replace(/ /i, '').toLowerCase()}`,
-      {
-        algorithm: 'md5',
-      },
-    );
-    contact.phone = hasha(`${contact.phone?.trim().replace(/ /i, '')}`, {
-      algorithm: 'md5',
-    });
-    contact.email = hasha(`${contact.email}`, { algorithm: 'md5' });
+    contact.name = contact.name
+      ? hasha(`${contact.name?.trim().replace(/ /i, '').toLowerCase()}`, {
+          algorithm: 'md5',
+        })
+      : null;
+    contact.phone = contact.phone
+      ? hasha(`${contact.phone?.trim().replace(/ /i, '')}`, {
+          algorithm: 'md5',
+        })
+      : null;
+    contact.email = contact.email
+      ? hasha(`${contact.email}`, { algorithm: 'md5' })
+      : null;
     contact.destroyedAt = new Date();
     await contact.save();
   }
