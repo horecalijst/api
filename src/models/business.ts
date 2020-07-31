@@ -64,7 +64,10 @@ Business.init(
           const businessId = this.getDataValue('id');
 
           const orders = await Order.findAll({
-            where: { businessId, status: OrderStatus.Paid },
+            where: {
+              businessId,
+              status: [OrderStatus.Paid, OrderStatus.Granted],
+            },
             order: [['createdAt', 'DESC']],
           });
 
@@ -111,7 +114,10 @@ Business.init(
           );
 
           const orders = await Order.findAll({
-            where: { businessId, status: OrderStatus.Paid },
+            where: {
+              businessId,
+              status: [OrderStatus.Paid, OrderStatus.Granted],
+            },
             order: [['createdAt', 'DESC']],
           });
 
