@@ -53,7 +53,7 @@ const apollo = new ApolloServer({
 
 // Middleware
 express.use(bodyParser.json());
-express.use(bodyParser.urlencoded());
+express.use(bodyParser.urlencoded({ extended: true }));
 express.use(
   jwt({
     secret: process.env.JWT_SECRET as string,
