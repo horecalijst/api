@@ -1,3 +1,4 @@
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import Business from 'models/business';
 import Contact from 'models/contact';
 
@@ -5,8 +6,8 @@ const addContact = async (
   _parent: any,
   {
     name,
-    email,
-    phone,
+    email: rawEmail,
+    phone: rawPhone,
     businessId,
   }: {
     name: string | null;
@@ -15,7 +16,7 @@ const addContact = async (
     businessId: string;
   },
 ) => {
-  if (!email && !phone) {
+  if (!rawEmail && !rawPhone) {
     throw new Error('both email & phone are missing');
   }
 
@@ -23,6 +24,15 @@ const addContact = async (
     (await Business.count({ where: { id: `${businessId}` } })) > 0;
   if (!validBusiness) {
     throw new Error('invalid businessId');
+  }
+
+  const email = rawEmail?.trim().toLowerCase() || null;
+  let phone = rawPhone?.trim() || null;
+  if (phone?.substr(0, 2) === '04' || phone?.substr(0, 2) === '09') {
+    phone = `+32${phone.substr(1, phone.length - 1)}`;
+  }
+  if (phone) {
+    phone = parsePhoneNumberFromString(phone)?.formatInternational() || null;
   }
 
   return Contact.create({
