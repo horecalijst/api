@@ -42,6 +42,9 @@ Contact.init(
       {
         fields: ['createdAt'],
       },
+      {
+        fields: ['destroyedAt'],
+      },
     ],
   },
 );
