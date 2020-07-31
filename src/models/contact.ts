@@ -7,6 +7,7 @@ class Contact extends Model {
   public name?: string | null;
   public email?: string | null;
   public phone?: string | null;
+  public readonly destroyedAt!: Date;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date | null;
@@ -27,6 +28,7 @@ Contact.init(
     name: { type: DataTypes.STRING(64), allowNull: true },
     email: { type: DataTypes.STRING(64), allowNull: false },
     phone: { type: DataTypes.STRING(16), allowNull: false },
+    destroyedAt: { type: DataTypes.DATE, allowNull: true },
   },
   {
     sequelize,
