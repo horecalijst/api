@@ -5,7 +5,7 @@ import Contact from 'models/contact';
 const addContact = async (
   _parent: any,
   {
-    name,
+    name: rawName,
     email: rawEmail,
     phone: rawPhone,
     businessId,
@@ -26,6 +26,7 @@ const addContact = async (
     throw new Error('invalid businessId');
   }
 
+  const name = rawName || null;
   const email = rawEmail?.trim().toLowerCase() || null;
   let phone = rawPhone?.trim() || null;
   if (phone?.substr(0, 2) === '04' || phone?.substr(0, 2) === '09') {
