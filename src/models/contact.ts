@@ -39,6 +39,9 @@ Contact.init(
       {
         fields: ['businessId'],
       },
+      {
+        fields: ['createdAt'],
+      },
     ],
   },
 );
