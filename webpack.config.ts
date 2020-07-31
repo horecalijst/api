@@ -12,6 +12,7 @@ export default {
     healthcheck: './src/scripts/healthcheck.ts',
     ['check-business-subscriptions']:
       './src/scripts/check-business-subscriptions.ts',
+    ['destroy-expired-contacts']: './src/scripts/destroy-expired-contacts.ts',
   },
   output: { path: path.resolve(__dirname, './dist') },
   resolve: { extensions: ['.json', '.ts'] },
