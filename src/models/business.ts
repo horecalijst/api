@@ -15,7 +15,6 @@ import sequelize from 'services/sequelize';
 import Contact from './contact';
 import Order, { OrderStatus } from './order';
 import Product from './product';
-// import Order, { OrderStatus } from './order';
 
 export enum BusinessStatus {
   Trial = 'TRIAL',
