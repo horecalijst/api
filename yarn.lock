@@ -956,7 +956,7 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@fast-csv/format@4.3.1":
+"@fast-csv/format@4.3.1", "@fast-csv/format@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@fast-csv/format/-/format-4.3.1.tgz#e550731487002e0d1bac13422dd8506cdfd60f50"
   integrity sha512-Ap6KSt0iJlzrivZU4grQzDGGOQ+vN5kvUeOHLF1BE7nWri1auiodgS3SCffvLe1Zvu79tACe1tw3dyBADk1NsA==
