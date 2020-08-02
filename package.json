@@ -28,7 +28,6 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
-    "fast-csv": "^4.3.1",
     "graphql-scalars": "^1.2.4",
     "graphql-tools": "^6.0.15",
     "hasha": "^5.2.0",
