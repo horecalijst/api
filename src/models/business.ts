@@ -3,6 +3,7 @@ import {
   addSeconds,
   differenceInDays,
   endOfDay,
+  formatISO,
   startOfDay,
   startOfToday,
   subDays,
@@ -188,7 +189,7 @@ Business.init(
               },
             });
 
-            data[`${startDate.getTime()}`] = count;
+            data[`${formatISO(date)}`] = count;
           }
 
           return data;
