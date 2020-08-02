@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-express';
 import bodyParser from 'body-parser';
-import Express, { Request } from 'express';
+import Express, { NextFunction, Request, Response } from 'express';
 import jwt from 'express-jwt';
 import User, { UserStatus } from 'models/user';
 
@@ -61,6 +61,14 @@ express.use(
     credentialsRequired: false,
   }),
 );
+express.use((e: Error, _req: Request, _res: Response, next: NextFunction) => {
+  if (e.message === 'jwt expired') {
+    next();
+    return;
+  }
+
+  throw e;
+});
 
 // Healthcheck
 express.get('/ping', requestHandlers.ping);
