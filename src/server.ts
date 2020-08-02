@@ -68,6 +68,12 @@ express.get('/ping', requestHandlers.ping);
 // Payment callback
 express.post('/payments/:orderId', requestHandlers.paymentCallback);
 
+// Business contacts export
+express.get(
+  '/businesses/:id/contacts/export',
+  requestHandlers.businessContactExport,
+);
+
 // Link Apollo with Express
 apollo.applyMiddleware({ app: express, path: '/' });
 
