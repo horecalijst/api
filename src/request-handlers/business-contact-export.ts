@@ -1,3 +1,4 @@
+import { format as formatCsv } from '@fast-csv/format';
 import {
   endOfDay,
   format as formatDate,
@@ -7,7 +8,6 @@ import {
 } from 'date-fns';
 import { nl as locale } from 'date-fns/locale';
 import { Request, Response } from 'express';
-import { format as formatCsv } from 'fast-csv';
 import jsonwebtoken from 'jsonwebtoken';
 import Business from 'models/business';
 import Contact from 'models/contact';
