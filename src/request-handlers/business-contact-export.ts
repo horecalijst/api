@@ -2,6 +2,7 @@ import { format as formatCsv } from '@fast-csv/format';
 import {
   endOfDay,
   format as formatDate,
+  formatISO,
   isValid,
   parseISO,
   startOfDay,
@@ -91,7 +92,7 @@ export default async (req: Request, res: Response) => {
     ]);
   }
 
-  const formattedDate = formatDate(new Date(date), 'yyyy-MM-dd');
+  const formattedDate = formatISO(date, { representation: 'date' });
 
   res.setHeader('Content-type', 'text/csv');
   res.setHeader(
