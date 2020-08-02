@@ -104,7 +104,7 @@ const consomeAuthenticationRequest = async (
   authRequest.save();
 
   return jsonwebtoken.sign({ id: user.id }, process.env.JWT_SECRET as string, {
-    expiresIn: '1 month',
+    expiresIn: '30 days',
   });
 };
 
