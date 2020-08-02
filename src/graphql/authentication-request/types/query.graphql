@@ -1,3 +1,4 @@
 type Query {
   authenticationRequests: [AuthenticationRequest]
+  refreshAuthToken: String
 }

@@ -1,3 +1,4 @@
+import jsonwebtoken from 'jsonwebtoken';
 import AuthenticationRequest from 'models/authentication-request';
 import { GraphqlContext } from 'server';
 
@@ -18,6 +19,23 @@ const authenticationRequests = async (
   });
 };
 
+const refreshAuthToken = async (
+  _parent: any,
+  _args: any,
+  context: GraphqlContext,
+) => {
+  const { user } = context;
+
+  if (!user) {
+    throw new Error('not authenticated');
+  }
+
+  return jsonwebtoken.sign({ id: user.id }, process.env.JWT_SECRET as string, {
+    expiresIn: '30 days',
+  });
+};
+
 export default {
   authenticationRequests,
+  refreshAuthToken,
 };
