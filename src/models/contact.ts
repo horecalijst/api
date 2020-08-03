@@ -26,8 +26,8 @@ Contact.init(
       allowNull: false,
     },
     name: { type: DataTypes.STRING(64), allowNull: true },
-    email: { type: DataTypes.STRING(64), allowNull: false },
-    phone: { type: DataTypes.STRING(32), allowNull: false },
+    email: { type: DataTypes.STRING(64), allowNull: true },
+    phone: { type: DataTypes.STRING(32), allowNull: true },
     destroyedAt: { type: DataTypes.DATE, allowNull: true },
   },
   {
