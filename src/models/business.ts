@@ -188,7 +188,7 @@ Business.init(
               },
             });
 
-            data[`${formatISO(date)}`] = count;
+            data[`${formatISO(date, { representation: 'date' })}`] = count;
           }
 
           return data;
