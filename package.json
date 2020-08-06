@@ -71,6 +71,7 @@
     "eslint-plugin-simple-import-sort": "^5.0.2",
     "husky": "^4.2.5",
     "json-loader": "^0.5.7",
+    "lint-staged": "^10.2.11",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.5",
     "typescript": "^3.9.7",
