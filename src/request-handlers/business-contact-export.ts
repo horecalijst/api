@@ -86,7 +86,7 @@ export default async (req: Request, res: Response) => {
       contact.name || '--',
       contact.email || '--',
       contact.phone || '--',
-      formatDate(new Date(contact.createdAt), 'dd MMMM yyyy, HH:mm', {
+      formatDate(new Date(contact.createdAt), 'd MMMM yyyy, HH:mm', {
         locale,
       }),
     ]);
