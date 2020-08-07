@@ -81,6 +81,9 @@ export default async (req: Request, res: Response) => {
     quoteColumns: true,
   });
 
+  // set timezone at runtime (only for this request) for correct time in export
+  process.env.TZ = 'Europe/Brussels';
+
   for (const contact of contacts) {
     stream.write([
       contact.name || '--',
@@ -88,7 +91,7 @@ export default async (req: Request, res: Response) => {
       contact.phone || '--',
       formatDate(new Date(contact.createdAt), 'd MMMM yyyy, HH:mm', {
         locale,
-      }) + ' UTC',
+      }),
     ]);
   }
 
