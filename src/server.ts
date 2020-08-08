@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-express';
-import Express, { NextFunction, Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import jwt from 'express-jwt';
 import User, { UserStatus } from 'models/user';
 
@@ -12,8 +12,8 @@ export interface GraphqlContext {
   userAgent: string;
 }
 
-const express = Express();
-express.disable('x-powered-by');
+const app = express();
+app.disable('x-powered-by');
 
 const apollo = new ApolloServer({
   schema,
@@ -51,16 +51,16 @@ const apollo = new ApolloServer({
 });
 
 // Middleware
-express.use(Express.json());
-express.use(Express.urlencoded({ extended: true }));
-express.use(
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
   jwt({
     secret: process.env.JWT_SECRET as string,
     algorithms: ['HS256'],
     credentialsRequired: false,
   }),
 );
-express.use((e: Error, _req: Request, _res: Response, next: NextFunction) => {
+app.use((e: Error, _req: Request, _res: Response, next: NextFunction) => {
   if (e.message === 'jwt expired') {
     next();
     return;
@@ -70,22 +70,22 @@ express.use((e: Error, _req: Request, _res: Response, next: NextFunction) => {
 });
 
 // Healthcheck
-express.get('/ping', requestHandlers.ping);
+app.get('/ping', requestHandlers.ping);
 
 // Payment callback
-express.post('/payments/:orderId', requestHandlers.paymentCallback);
+app.post('/payments/:orderId', requestHandlers.paymentCallback);
 
 // Business contacts export
-express.get(
+app.get(
   '/businesses/:id/contacts/export',
   requestHandlers.businessContactExport,
 );
 
 // Link Apollo with Express
-apollo.applyMiddleware({ app: express, path: '/' });
+apollo.applyMiddleware({ app: app, path: '/' });
 
 // Start server on port 3001
-express.listen(3001, () => {
+app.listen(3001, () => {
   console.log(
     `> Application is running on http://localhost:3001${apollo.graphqlPath} 🚀`,
   );
