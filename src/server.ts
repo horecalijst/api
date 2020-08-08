@@ -1,6 +1,8 @@
 import { ApolloServer } from 'apollo-server-express';
 import express, { NextFunction, Request, Response } from 'express';
 import jwt from 'express-jwt';
+import { cleanUserAgent } from 'functions/user-agent';
+import gql from 'graphql-tag';
 import User, { UserStatus } from 'models/user';
 
 import schema from './graphql/schema';
@@ -21,6 +23,25 @@ const apollo = new ApolloServer({
   context: async ({ req }: { req: Request & { user: { id?: string } } }) => {
     const ip = `${req.get('cf-connecting-ip') || req.connection.remoteAddress}`;
     const userAgent = `${req.get('user-agent')}`;
+    const cleanedUserAgent = cleanUserAgent(userAgent);
+
+    const query = req?.body?.query
+      ? gql`
+          ${req?.body?.query}
+        `
+      : null;
+    if (query) {
+      for (const definition of query.definitions) {
+        for (const { name } of (definition as any)?.selectionSet?.selections) {
+          const { value: mutationOrQueryName } = name;
+          console.log(
+            `[${new Date().toISOString()}] [IP: ${ip}] [UA: ${cleanedUserAgent}] ${
+              (definition as any)?.operation
+            } ${mutationOrQueryName}`,
+          );
+        }
+      }
+    }
 
     const context: GraphqlContext = {
       user: null,
