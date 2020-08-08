@@ -12,6 +12,7 @@ const Sequelize = new _Sequalize({
   define: {
     charset: 'utf8mb4',
   },
+  logging: process.env.NODE_ENV !== 'production',
 });
 
 export default Sequelize;
