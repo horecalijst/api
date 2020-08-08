@@ -23,7 +23,10 @@ const apollo = new ApolloServer({
   context: async ({ req }: { req: Request & { user: { id?: string } } }) => {
     const ip = `${req.get('cf-connecting-ip') || req.connection.remoteAddress}`;
     const userAgent = `${req.get('user-agent')}`;
-    const cleanedUserAgent = cleanUserAgent(userAgent);
+    let cleanedUserAgent = cleanUserAgent(userAgent);
+    if (cleanedUserAgent.toLocaleLowerCase().includes('other')) {
+      cleanedUserAgent = userAgent;
+    }
 
     const query = req?.body?.query
       ? gql`
