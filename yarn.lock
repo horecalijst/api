@@ -1264,14 +1264,13 @@
     aggregate-error "3.0.1"
     tslib "~2.0.0"
 
-"@mollie/api-client@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@mollie/api-client/-/api-client-3.2.3.tgz#62cecd394df82774ff94ecb1ee9e0ccf72f989a1"
-  integrity sha512-tqw7y57TDDIuvjJNP487pYGGLXFrGv/27/xpeuyjSP7sGvvfICOvOjUmrCUkBNuJkxUKTopijJoxD5HkWhyRHQ==
+"@mollie/api-client@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@mollie/api-client/-/api-client-3.2.4.tgz#6edde9b8a4e5afee002f9aeb435d7420af727e5c"
+  integrity sha512-lMFJo0rfTBv+Fh9AQEltKeQGnzn4BouSAzTjHRKcFVnGFfQBYJx/CFWZIW4n3JyrxcJ4cgqsDmPfB1h5Qcf9pQ==
   dependencies:
     axios "^0.19.0"
     lodash "^4.17.15"
-    qs "^6.7.0"
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
@@ -6543,7 +6542,7 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.5.0, qs@^6.5.1, qs@^6.7.0:
+qs@^6.5.0, qs@^6.5.1:
   version "6.9.4"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
   integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
